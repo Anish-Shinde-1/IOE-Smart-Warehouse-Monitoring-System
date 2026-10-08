@@ -1,0 +1,8 @@
+.pio/
+.vscode/
+*.bin
+*.elf
+*.bin.gz
+*.map
+node_modules/
+.DS_Store

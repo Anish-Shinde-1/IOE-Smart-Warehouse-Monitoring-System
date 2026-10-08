@@ -1,0 +1,289 @@
+{
+  "version": 1,
+  "author": "Antigravity",
+  "editor": "wokwi",
+  "parts": [
+    {
+      "type": "board-esp32-devkit-c-v4",
+      "id": "esp",
+      "top": 0,
+      "left": 0,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-ds18b20",
+      "id": "temp",
+      "top": -162.9,
+      "left": 273,
+      "attrs": {
+        "temperature": "25.4"
+      }
+    },
+    {
+      "type": "wokwi-slide-potentiometer",
+      "id": "gas_slider",
+      "top": -150.9,
+      "left": -252.2,
+      "attrs": {
+        "travelLength": "30"
+      }
+    },
+    {
+      "type": "wokwi-hc-sr04",
+      "id": "ultrasonic",
+      "top": -286.5,
+      "left": 5.5,
+      "attrs": {
+        "distance": "15.2"
+      }
+    },
+    {
+      "type": "wokwi-pir-motion-sensor",
+      "id": "pir",
+      "top": -15.2,
+      "left": -228.18,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r_green",
+      "top": 216,
+      "left": 105.05,
+      "rotate": 90,
+      "attrs": {
+        "value": "220"
+      }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led_green",
+      "top": 226.8,
+      "left": 80.6,
+      "attrs": {
+        "color": "green",
+        "label": "NORMAL"
+      }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r_red",
+      "top": 216,
+      "left": 133.85,
+      "rotate": 90,
+      "attrs": {
+        "value": "220"
+      }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led_red",
+      "top": 303.6,
+      "left": 80.6,
+      "attrs": {
+        "color": "red",
+        "label": "ALERT"
+      }
+    },
+    {
+      "type": "wokwi-buzzer",
+      "id": "buzzer",
+      "top": -7.2,
+      "left": 232.2,
+      "attrs": {
+        "volume": "0.5"
+      }
+    }
+  ],
+  "connections": [
+    [
+      "temp:VCC",
+      "esp:3V3",
+      "red",
+      []
+    ],
+    [
+      "temp:DQ",
+      "esp:4",
+      "gold",
+      [
+        "v28.8",
+        "h-143.9",
+        "v163.2"
+      ]
+    ],
+    [
+      "temp:GND",
+      "esp:GND.1",
+      "black",
+      [
+        "v19.2",
+        "h-384",
+        "v182.4"
+      ]
+    ],
+    [
+      "gas_slider:VCC",
+      "esp:5V",
+      "red",
+      [
+        "v-0.9",
+        "h76.8",
+        "v345.6",
+        "h43.01"
+      ]
+    ],
+    [
+      "gas_slider:GND",
+      "esp:GND.1",
+      "black",
+      [
+        "h67.2",
+        "v268"
+      ]
+    ],
+    [
+      "gas_slider:SIG",
+      "esp:34",
+      "orange",
+      []
+    ],
+    [
+      "pir:VCC",
+      "esp:5V",
+      "red",
+      [
+        "v115.2",
+        "h192",
+        "v-28.8"
+      ]
+    ],
+    [
+      "pir:GND",
+      "esp:GND.1",
+      "black",
+      [
+        "v76.8",
+        "h177.15"
+      ]
+    ],
+    [
+      "pir:OUT",
+      "esp:27",
+      "purple",
+      [
+        "v48",
+        "h186.87"
+      ]
+    ],
+    [
+      "ultrasonic:VCC",
+      "esp:5V",
+      "red",
+      [
+        "v19.2",
+        "h-86.4",
+        "v374.4"
+      ]
+    ],
+    [
+      "ultrasonic:GND",
+      "esp:GND.1",
+      "black",
+      [
+        "v9.6",
+        "h-126",
+        "v336"
+      ]
+    ],
+    [
+      "ultrasonic:TRIG",
+      "esp:5",
+      "blue",
+      [
+        "h-0.4",
+        "v240"
+      ]
+    ],
+    [
+      "ultrasonic:ECHO",
+      "esp:18",
+      "cyan",
+      [
+        "v19.2",
+        "h28",
+        "v278.4"
+      ]
+    ],
+    [
+      "esp:2",
+      "r_green:1",
+      "green",
+      []
+    ],
+    [
+      "r_green:2",
+      "led_green:A",
+      "green",
+      [
+        "v18",
+        "h-115.2"
+      ]
+    ],
+    [
+      "led_green:C",
+      "esp:GND.2",
+      "black",
+      [
+        "v9.6",
+        "h48.4",
+        "v-249.6"
+      ]
+    ],
+    [
+      "esp:16",
+      "r_red:1",
+      "red",
+      [
+        "h62.44",
+        "v81.25"
+      ]
+    ],
+    [
+      "r_red:2",
+      "led_red:A",
+      "red",
+      [
+        "v56.4"
+      ]
+    ],
+    [
+      "led_red:C",
+      "esp:GND.2",
+      "black",
+      [
+        "v9.6",
+        "h77.2",
+        "v-326.4"
+      ]
+    ],
+    [
+      "esp:15",
+      "buzzer:2",
+      "magenta",
+      [
+        "h168.04",
+        "v-96"
+      ]
+    ],
+    [
+      "buzzer:1",
+      "esp:GND.2",
+      "black",
+      [
+        "h-57.6",
+        "v-48"
+      ]
+    ]
+  ],
+  "dependencies": {}
+}

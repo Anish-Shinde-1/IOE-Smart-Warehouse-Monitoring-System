@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Warehouse Dashboard</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Header -->
+        <header class="header">
+            <div class="logo">
+                <i class="fa-solid fa-warehouse"></i>
+                <h1>Nexus Warehouse</h1>
+            </div>
+            <div class="connection-status" id="conn-status">
+                <div class="indicator disconnected"></div>
+                <span id="conn-text">Connecting to MQTT Broker...</span>
+            </div>
+        </header>
+
+        <!-- Alert Banner -->
+        <div class="alert-banner" id="alert-banner">
+            <div class="alert-content">
+                <i class="fa-solid fa-shield-check"></i>
+                <span id="alert-text">SYSTEM SECURE - ALL SENSORS NOMINAL</span>
+            </div>
+        </div>
+
+        <!-- Dashboard Grid -->
+        <main class="grid-container">
+            <!-- Temperature Card -->
+            <div class="card" id="card-temp">
+                <div class="card-header">
+                    <div class="icon-wrapper temp-icon">
+                        <i class="fa-solid fa-temperature-half"></i>
+                    </div>
+                    <h2>Temperature</h2>
+                </div>
+                <div class="card-body">
+                    <div class="value-display">
+                        <span class="value" id="val-temp">--</span>
+                        <span class="unit">°C</span>
+                    </div>
+                    <div class="progress-bar-container">
+                        <div class="progress-bar temp-bar" id="bar-temp"></div>
+                    </div>
+                    <p class="status-label" id="status-temp">Awaiting Data</p>
+                </div>
+            </div>
+
+            <!-- Gas Sensor Card -->
+            <div class="card" id="card-gas">
+                <div class="card-header">
+                    <div class="icon-wrapper gas-icon">
+                        <i class="fa-solid fa-smog"></i>
+                    </div>
+                    <h2>Gas / Smoke</h2>
+                </div>
+                <div class="card-body">
+                    <div class="value-display">
+                        <span class="value" id="val-gas">--</span>
+                        <span class="unit">RAW</span>
+                    </div>
+                    <div class="progress-bar-container">
+                        <div class="progress-bar gas-bar" id="bar-gas"></div>
+                    </div>
+                    <p class="status-label" id="status-gas">Awaiting Data</p>
+                </div>
+            </div>
+
+            <!-- Stock Level Card -->
+            <div class="card" id="card-stock">
+                <div class="card-header">
+                    <div class="icon-wrapper stock-icon">
+                        <i class="fa-solid fa-boxes-stacked"></i>
+                    </div>
+                    <h2>Inventory Level</h2>
+                </div>
+                <div class="card-body">
+                    <div class="value-display">
+                        <span class="value" id="val-stock">--</span>
+                        <span class="unit">%</span>
+                    </div>
+                    <div class="progress-bar-container">
+                        <div class="progress-bar stock-bar" id="bar-stock"></div>
+                    </div>
+                    <p class="status-label" id="status-stock">Awaiting Data</p>
+                </div>
+            </div>
+
+            <!-- Motion Intrusion Card -->
+            <div class="card" id="card-motion">
+                <div class="card-header">
+                    <div class="icon-wrapper motion-icon">
+                        <i class="fa-solid fa-person-walking-arrow-right"></i>
+                    </div>
+                    <h2>Intrusion Monitor</h2>
+                </div>
+                <div class="card-body motion-body">
+                    <div class="radar-container">
+                        <div class="radar" id="radar"></div>
+                        <i class="fa-solid fa-user-secret" id="intruder-icon"></i>
+                    </div>
+                    <h3 class="value-text" id="val-motion">NO MOTION</h3>
+                    <p class="status-label" id="status-motion">Awaiting Data</p>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- MQTT.js library -->
+    <script src="https://unpkg.com/mqtt/dist/mqtt.min.js"></script>
+    <!-- Custom JS -->
+    <script src="script.js"></script>
+</body>
+</html>
